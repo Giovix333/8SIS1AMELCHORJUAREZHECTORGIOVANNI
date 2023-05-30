@@ -38,6 +38,8 @@ function validar(formulario){
     var checkString = formulario.edad.value;
 
     var todoesValido = true;
+    alert("hi");
+
     /*Java Script ees un lenguaje de programación no tipado, solo maneja tres tipos de variable de dato: var - variable cambiante con
     acceso público, let es una variable de acceso restringido, const es una constante de acceso único*/ 
     for(var i = 0; i < checkString.length; i++){
@@ -55,12 +57,16 @@ function validar(formulario){
     }
     if (!todoesValido){
         alert("Escriba únicamente números en el campo edad");
-        formulario.nombre.focus();
+        formulario.edad.focus();
         return false;
     }
 
     var txt = formulario.email.value;
 
     var b = /^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/
+
+    alert ("Email " + (b.test/(txt) ? " " : "no") + " valido");
+
+    return b.test;
 
 }
