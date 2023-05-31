@@ -1,0 +1,61 @@
+
+/* Estilos para el encabezado */
+header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  
+  /* Estilos para el contenedor principal */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Estilos para el formulario */
+  .formulario {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  /* Estilos para las etiquetas */
+  label {
+    font-weight: bold;
+  }
+  
+  /* Estilos para los campos de entrada de texto */
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Estilos para los botones */
+  input[type="submit"],
+  input[type="reset"] {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  input[type="submit"]:hover,
+  input[type="reset"]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Estilos para el enlace de regreso */
+  a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
