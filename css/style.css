@@ -1,5 +1,46 @@
-*{
+/* Estilos para el encabezado */
+h1 {
+  text-align: center;
+  color: #5F0F40;
+}
 
-    background-color: cadetblue;
+/* Estilos para los párrafos */
+p {
+  margin-bottom: 10px;
+}
 
+/* Estilos para la lista de prácticas */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* Estilos para los elementos de la lista */
+li {
+  margin-bottom: 10px;
+}
+
+/* Estilos para los enlaces de la lista */
+a {
+  text-decoration: none;
+  color: #f4ebed;
+}
+
+/* Estilos para los enlaces cuando se les pasa el mouse por encima */
+a:hover {
+  color: #5F0F40;
+}
+
+/* Estilos para el contenedor principal */
+div {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #E36414;
+  color: #FFF;
+}
+
+/* Estilos adicionales para la página */
+body {
+  background-color: #0F4C5C;
 }
