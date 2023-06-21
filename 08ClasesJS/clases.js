@@ -121,4 +121,7 @@ const resultadosBusqueda = {
     mejorCoincidencia: "Resultado3"
 };
 
-console.log(``);
+console.log();
+
+const copiadelresultadodebusquedaModificado = {... resultadoBusqueda, cadenaBusqueda : "Resultado3"};
+console.log(`Copia modificada`)
