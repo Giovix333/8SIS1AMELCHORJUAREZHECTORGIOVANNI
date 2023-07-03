@@ -1,55 +1,55 @@
-/**/
+//vamos a crear un arreglo para contener las instruccines
 
-var instrucciones = ["Utiliza las flechas para mover las piezas", " Ordenar las piezas hasta alcanzar la imagen objetivo"];
+var instrucciones = ["Utiliza las flechas para mover las piezas", "Ordenar las piezas hasta alcanzar la imagen objetivo"];
 
-//
+//vamos a crear una variable para guardar los movimientos
 
 var movimientos = [];
 
-//Vamos a crear una matriz que represente las posiciones del rompecabezas
+//vamos a crear una matriz que represente las posiciones del rompecabezas
 
 var rompe = [
-    [1,2,3],
-    [4,5,6],
-    [7,8,9]
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
 ];
+
 
 var rompeCorrecta = [
-    [1,2,3],
-    [4,5,6],
-    [7,8,9]
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
 ];
 
-//Necesito una variable para guardar la posición de la pieza vacía.
 
+//necesito una variable para guardar la posicion de la pieza vacia
 var filaVacia = 2;
 var columnaVacia = 2;
 
-//VAmos hacer una función para mostrar las instrucciones
+//vamos a hacer una funcion para mostrar las instrucciones
 
-function mostrarInstrucciones (instrucciones){
-    for (var i = 0; i < instrucciones.length;i++){
+function mostrarInstrucciones(instrucciones){
+    for(var i = 0; i < instrucciones.length; i++){
         mostrarInstruccionesEnLista(instrucciones[i], "lista-instrucciones");
     }
 }
 
-function mostrarInstruccionesEnLista(instruccion, idLista){
+function  mostrarInstruccionesEnLista(instruccion, idLista){
     var ul = document.getElementById(idLista);
     var li = document.createElement("li");
     li.textContent = instruccion;
     ul.appendChild(li);
 }
 
-//Vamos a crear una función para saber cuál fue el último movimiento
 
-function agregarUltimoMov(direccion){
+//vamos a crear una funcion para saber cual fue el ultimo movimiento
+function agregarUltimoMovimiento(direccion){
     movimientos.push(direccion);
 }
 
-//Una función para saber si ganó
-
+//una funcion para saber si gane
 function checarSiGano(){
-    for (var i= 0; i < rompe.length; i++){
+    for(var i = 0; i < rompe.length; i++){
         for(var j = 0; j < rompe[i].length; j++){
             //comparar
             var rompeActual = rompe[i][j];
@@ -58,24 +58,22 @@ function checarSiGano(){
             }
         }
     }
-
     return true;
 }
 
-//Función para mostrarlo
+//funcion para mostrar que gane
 function mostrarCartelGanador(){
-    if (checarSiGano()) {
-        alert("Wiiii, ganaste. Punto extra");
+    if(checarSiGano()){
+        alert("Wiiii a mimir ya gane");
     }
     return false;
 }
 
-//crear una función que se encargue del intercambio de posiciones del rompecabezas
-
-/*arreglo [1][2] = arreglo[0][0]
+//vamos a crear una funcion que se encargue del intercambio de la
+/*arreglo[1][2] = arreglo[0][0]
 arreglo[0][0] = arreglo[1][2]*/
 
-function intercambioPosicionesRompe(filaPos1, columnaPos1, filaPos2, columnaPos2){
+function intercambiarPosicionesRompe(filaPos1, columnaPos1, filaPos2, columnaPos2){
     var pos1 = rompe[filaPos1][columnaPos1];
     var pos2 = rompe[filaPos2][columnaPos2];
 
@@ -84,74 +82,70 @@ function intercambioPosicionesRompe(filaPos1, columnaPos1, filaPos2, columnaPos2
 
 }
 
-//Tengo que saber dónde está la vacía
-
-function actualizarPosVacia(nuevaFila, nuevaColumna){
-
+//tengo que saber donde esta la vacia
+function actualizarPosicionVacia(nuevaFila, nuevaColumna){
     filaVacia = nuevaFila;
     columnaVacia = nuevaColumna;
-
 }
 
-//Tenemos que crear una función que se encargue de saber si la posición es correcta
-
+//tenemos que crear una funcion que se encargue de saber si la posicion es correcta
 function posicionValida(fila, columna){
     return (fila >= 0 && fila <= 2 && columna >= 0 && columna <= 2);
 }
 
-//Movimento que es por parte de las flechas, hay que identificar los movimientos, arriba 38, abajo 40, izquierda 37, derecha 39
 
-function moverEnDireccion (direccion){
+//ahora viene la parte del movimiento que es por aparte de las flehcas hay que identificar el mov, arriba 38 abajo 40 izquierda 37 derecha 39
+
+function moverEnDireccion(direccion){
     var nuevaFilaPiezaVacia;
     var nuevaColumnaPiezaVacia;
-    // Si se mueve hacia abajo
-    if (direccion === codigosDireccion.ABAJO) {
-        nuevaFilaPiezaVacia = filaVacia +1;
-        nuevaColumnaPiezaVacia = columnaVacia;
-     }
-     //Si se mueve hacia arriba
-     else if (direccion === codigosDireccion.ARRIBA){
-        nuevaFilaPiezaVacia = filaVacia -1;
-        nuevaColumnaPiezaVacia = columnaVacia;
-     }
-     //Izquierda
-     else if (direccion === codigosDireccion.IZQUIERDA){
-        nuevaFilaPiezaVacia = filaVacia;
-        nuevaColumnaPiezaVacia = columnaVacia -1;
-     }
-     //Derecha
-     else if (direccion === codigosDireccion.DERECHA){
-        nuevaFilaPiezaVacia = filaVacia;
-        nuevaColumnaPiezaVacia = columnaVacia +1;
-     }
 
-     //Checar si la nueva posición es válida
-     if (posicionValida(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia)) {
-        intercambioPosiciones(filaVacia, columnaVacia, nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
-        actualizarPosVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
+    //si se mueve hacia abajo
+    if(direccion === codigosDireccion.ABAJO){
+        nuevaFilaPiezaVacia = filaVacia + 1;
+        nuevaColumnaPiezaVacia = columnaVacia;
+    }
+    //si se mueve hacia arriba
+    else if(direccion === codigosDireccion.ARRIBA){
+        nuevaFilaPiezaVacia = filaVacia - 1;
+        nuevaColumnaPiezaVacia = columnaVacia;
+    } 
 
-        //agregar el último mov
-        agregarUltimoMov(direccion);
-     }
+     //si se mueve hacia izquierda
+     else if(direccion === codigosDireccion.IZQUIERDA){
+        nuevaFilaPiezaVacia = filaVacia;
+        nuevaColumnaPiezaVacia = columnaVacia - 1;
+    } 
+
+     //si se mueve hacia derecha
+     else if(direccion === codigosDireccion.DERECHA){
+        nuevaFilaPiezaVacia = filaVacia;
+        nuevaColumnaPiezaVacia = columnaVacia + 1;
+    } 
+
+    //checar si la nueva posicion es valida y sino intercambiarla
+    if(posicionValida(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia)){
+        intercambiarPosiciones(filaVacia, columnaVacia, nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
+        actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
+        //agregar el ultimo mov
+        agregarUltimoMovimiento(direccion);
+    }
 }
 
-//Aquí van codigos
-
+//aqui van mis codigos
 var codigosDireccion = {
     IZQUIERDA : 37,
+    ARRIBA : 38, 
     DERECHA : 39,
-    ARRIBA: 38,
     ABAJO : 40
-}
+};
 
-function intercambioPosiciones(fila1, columna1, fila2, columna2){
+function intercambiarPosiciones(fila1, columna1, fila2, columna2){
     var pieza1 = rompe[fila1][columna1];
     var pieza2 = rompe[fila2][columna2];
 
-    intercambioPosicionesRompe(fila1, columna1, fila2, columna2);
-
-
-    intercambiarPosicionesDOM(`pieza`+ pieza1, `pieza`+ pieza2);
+    intercambiarPosicionesRompe(fila1, columna1, fila2, columna2);
+    intercambiarPosicionesDOM('pieza' + pieza1, 'pieza' + pieza2);
 }
 
 function intercambiarPosicionesDOM(idPieza1, idPieza2){
@@ -160,85 +154,70 @@ function intercambiarPosicionesDOM(idPieza1, idPieza2){
 
     var padre = elementoPieza1.parentNode;
 
-    var clonElemento1 = elementoPieza1.cloneNode(true);
-    var clonElemento2 = elementoPieza2.cloneNode(true);
+    var cloneElemento1 = elementoPieza1.cloneNode(true);
+    var cloneElemento2 = elementoPieza2.cloneNode(true);
 
-    padre.replaceChild(clonElemento1, elementoPieza2);
-    padre.replaceChild(clonElemento2, elementoPieza1);
+    padre.replaceChild(cloneElemento1, elementoPieza2);
+    padre.replaceChild(cloneElemento2, elementoPieza1);
+
 }
 
-//nececito actualizar mov
-
-function actualizarUltimoMov(direccion){
-    var UltimoMov = document.getElementById(`flecha`);
+//necesito actualizar los mov
+function actualizarUltimoMovimiento(direccion){
+    var ultimoMov = document.getElementById('flecha');
     switch(direccion){
-
         case codigosDireccion.ARRIBA:
-            UltimoMov.textContent=`↑`;
+            ultimoMov.textContent = '↑';
             break;
         case codigosDireccion.ABAJO:
-            UltimoMov.textContent=`↓`;
+            ultimoMov.textContent = '↓';
             break;
         case codigosDireccion.DERECHA:
-            UltimoMov.textContent=`→`;
+            ultimoMov.textContent = '→';
             break;
         case codigosDireccion.IZQUIERDA:
-            UltimoMov.textContent=`←`;
+            ultimoMov.textContent = '←';
             break;
-
     }
 }
 
-//Crear función para mezclar
-
-function mezclarPiezas(veces) {
-
-    if (veces <= 0) {
-        
+function mezclarPiezas(veces){
+    if(veces <= 0){
         return;
-
     }
 
     var direcciones = [codigosDireccion.ABAJO, codigosDireccion.ARRIBA, codigosDireccion.DERECHA, codigosDireccion.IZQUIERDA];
 
-    var direccion = direcciones[Math.floor(random()*direcciones.length)];
+    var direccion = direcciones[Math.floor(Math.random() * direcciones.length)];
 
-    moverDireccion(direccion);
+    moverEnDireccion(direccion);
 
-    setTimeout(function(){
+    setTimeout(function() {
         mezclarPiezas(veces-1);
-    },100);
-    
+    }, 100);
 }
 
-//Capturar las teclas que ha ingresado el jugador
-
-function CapturarTeclas(){
+//vamos a capturar las teclas que ha ingresado el jugador
+function capturarTeclas(){
     document.body.onkeydown = (function(evento){
-        if (evento.which === codigosDireccion.ABAJO ||
-            evento.which === codigosDireccion.ARRIBA ||
-            evento.which === codigosDireccion.DERECHA ||
-            evento.which === codigosDireccion.IZQUIERDA) {
+        if(evento.which === codigosDireccion.ABAJO ||evento.which === codigosDireccion.ARRIBA || evento.which === codigosDireccion.IZQUIERDA || evento.which === codigosDireccion.DERECHA){
+            moverEnDireccion(evento.which);
+            actualizarUltimoMovimiento(event.which);
 
-                moverDireccion(evento.which);
-                actualizarUltimoMov(evento.which);
-
-                var gano = checarSiGano;
-                if (gano) {
-                    setTimeout(function(){
-                        mostrarCartelGanador();
-                    },500);
-                }
-                evento.preventDefault;
-            
+            var gano = checarSiGano;
+            if(gano){
+                setTimeout(function(){
+                    mostrarCartelGanador();
+                }, 500);
+            }
+            evento.preventDefault;
         }
     });
 }
 
 function iniciar(){
     mezclarPiezas(30);
-    CapturarTeclas();
-
+    capturarTeclas();
 }
 
 //ejecutamos las funciones
